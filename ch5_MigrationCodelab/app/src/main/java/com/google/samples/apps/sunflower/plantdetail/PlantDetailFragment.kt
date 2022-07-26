@@ -21,6 +21,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.material.MaterialTheme
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ShareCompat
 import androidx.core.widget.NestedScrollView
@@ -52,7 +53,7 @@ class PlantDetailFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         val binding = DataBindingUtil.inflate<FragmentPlantDetailBinding>(
             inflater, R.layout.fragment_plant_detail, container, false
         ).apply {
@@ -66,6 +67,11 @@ class PlantDetailFragment : Fragment() {
                         Snackbar.make(root, R.string.added_plant_to_garden, Snackbar.LENGTH_LONG)
                             .show()
                     }
+                }
+            }
+            composeView.setContent {
+                MaterialTheme {
+                    PlantDetailDescription(plantDetailViewModel)
                 }
             }
 
