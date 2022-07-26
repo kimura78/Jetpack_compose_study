@@ -16,14 +16,13 @@
 
 package com.google.samples.apps.sunflower.plantdetail
 
-import android.icu.util.DateInterval
+import android.content.res.Configuration
 import android.text.method.LinkMovementMethod
 import android.widget.TextView
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -40,6 +39,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.text.HtmlCompat
+import com.google.android.material.composethemeadapter.MdcTheme
 import com.google.samples.apps.sunflower.R
 import com.google.samples.apps.sunflower.data.Plant
 import com.google.samples.apps.sunflower.viewmodels.PlantDetailViewModel
@@ -67,7 +67,7 @@ private fun PlantName(name: String) {
 @Preview(showBackground = true)
 @Composable
 private fun PlanetNamePreview() {
-    MaterialTheme {
+    MdcTheme {
         PlantName(name = "Apple")
     }
 }
@@ -95,7 +95,7 @@ fun PlantDetailContent(plant: Plant) {
 @Composable
 private fun PlantDetailContentPreview() {
     val plant = Plant("id", "Apple", "HTML<br><br>description", 3, 30, "")
-    MaterialTheme {
+    MdcTheme {
         PlantDetailContent(plant)
     }
 }
@@ -128,7 +128,7 @@ private fun PlantWatering(wateringInterval: Int) {
 @Preview
 @Composable
 private fun PlantWateringPreview() {
-    MaterialTheme {
+    MdcTheme {
         PlantWatering(7)
     }
 }
@@ -154,7 +154,16 @@ private fun PlantDescription(description: String) {
 @Preview
 @Composable
 private fun PlantDescriptionPreview() {
-    MaterialTheme {
+    MdcTheme {
         PlantDescription("HTML<br><br>description")
+    }
+}
+
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun PlantDetailContentDarkPreview() {
+    val plant = Plant("id", "Apple", "HTML<br><br>description", 3, 30, "")
+    MdcTheme {
+        PlantDetailContent(plant)
     }
 }
