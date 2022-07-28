@@ -95,10 +95,12 @@ fun RallyApp() {
                     "$accountsName/{name}",
                     arguments = listOf(
                         navArgument("name") {
-                            // Make argument type safe
                             type = NavType.StringType
-                        }
-                    )
+                        },
+                    ),
+                    deepLinks =  listOf(navDeepLink {
+                        uriPattern = "rally://$accountsName/{name}"
+                    })
                 ) { entry ->
                     val accountName = entry.arguments?.getString("name")
                     val account = UserData.getAccount(accountName)
