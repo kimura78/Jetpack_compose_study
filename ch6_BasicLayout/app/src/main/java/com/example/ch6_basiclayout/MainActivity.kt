@@ -45,6 +45,26 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
+fun LayoutsCodelab() {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = "LayoutsCodelab")
+                },
+                actions = {
+                    IconButton(onClick = { /* doSomething() */ }) {
+                        Icon(Icons.Filled.Favorite, contentDescription = null)
+                    }
+                }
+            )
+        }
+    ) { innerPadding ->
+        BodyContent(Modifier.padding(innerPadding))
+    }
+}
+
+@Composable
 fun StaggeredGrid(
     modifier: Modifier = Modifier,
     rows: Int = 3,
@@ -104,7 +124,8 @@ fun Chip(modifier: Modifier = Modifier, text: String) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
-                modifier = Modifier.size(16.dp, 16.dp)
+                modifier = Modifier
+                    .size(16.dp, 16.dp)
                     .background(color = MaterialTheme.colors.secondary)
             )
             Spacer(Modifier.width(4.dp))
@@ -139,6 +160,6 @@ fun BodyContent(modifier: Modifier = Modifier) {
 @Composable
 fun LayoutsCodelabPreview() {
     Ch6_BasicLayoutTheme {
-        BodyContent()
+        LayoutsCodelab()
     }
 }
